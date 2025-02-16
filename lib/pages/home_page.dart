@@ -28,41 +28,91 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                    flex: 3,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Flashcard Categories',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
+                  flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      spacing: 10,
+                      children: [
+                        SizedBox(
+                          height: 110,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Flashcard Categories',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            TextButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: violet,
+                                padding: EdgeInsets.symmetric(horizontal: 18),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
                               ),
-                              TextButton(
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor: violet,
-                                  padding: EdgeInsets.symmetric(horizontal: 18),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                              onPressed: () {},
+                              child: Text(
+                                'View All',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          color: Colors.transparent,
+                          width: double.infinity,
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            runSpacing: 30,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width / 3.6,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 2,
+                                        blurRadius: 5,
+                                        offset: Offset(0, 3) // changes position of shadow
+                                    ),
+                                  ],
                                 ),
-                                onPressed: () {},
-                                child: Text('View All', style: TextStyle(color: Colors.white),),
-                              )
+                                child: Column(
+                                  children: [
+                                    Image.asset('assets/Maths.png')
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(50),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 2,
+                                        blurRadius: 5,
+                                        offset: Offset(0, 3) // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
-                        ],
-                      ),
-                    )),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
 
             /// Search FlashCards
             Positioned(
-              top: MediaQuery.of(context).size.width * 17.8 / 100,
+              top: MediaQuery.of(context).size.width * 10.8 / 100,
               right: MediaQuery.of(context).size.width * 0 / 100,
               width: MediaQuery.of(context).size.width,
               child: Padding(
@@ -116,7 +166,116 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: ,
+      bottomNavigationBar: Stack(
+        children: [
+          Container(
+            height: 120,
+            color: Colors.transparent,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 35,
+                ),
+                Container(
+                  height: 85,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3) // changes position of shadow
+                        ),
+                      ]
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        child: Image.asset(
+                          'assets/Home.png',
+                        ),
+                      ),
+                      GestureDetector(
+                        child: Image.asset(
+                          'assets/Profile.png',
+                          scale: 0.8,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// Add FlashCards
+          Positioned(
+            top: MediaQuery.of(context).size.width * 0,
+            right: MediaQuery.of(context).size.width * 0.38,
+            width: 100,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3) // changes position of shadow
+                  ),
+                ]
+              ),
+              child: GestureDetector(
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      color: violet,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: Offset(0, 3) // changes position of shadow
+                        ),
+                      ]
+                  ),
+                  child: Icon(Icons.add, color: Colors.white, size: 30,),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
+
+/*
+
+          Container(
+            height: 90,
+            color: Colors.red,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  child: Image.asset(
+                    'assets/Home.png',
+                    scale: 0.85,
+                  ),
+                ),
+                GestureDetector(
+                  child: Image.asset(
+                    'assets/Profile.png',
+                    scale: 0.75,
+                  ),
+                ),
+              ],
+            ),
+          ),
+ */
