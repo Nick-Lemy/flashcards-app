@@ -67,39 +67,12 @@ class HomePage extends StatelessWidget {
                             alignment: WrapAlignment.spaceBetween,
                             runSpacing: 30,
                             children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 3.6,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        spreadRadius: 2,
-                                        blurRadius: 5,
-                                        offset: Offset(0, 3) // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                                child: Column(
-                                  children: [
-                                    Image.asset('assets/Maths.png')
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(50),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        spreadRadius: 2,
-                                        blurRadius: 5,
-                                        offset: Offset(0, 3) // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              flashcardCategory(name: 'Mathematics', context: context),
+                              flashcardCategory(name: 'Science', context: context),
+                              flashcardCategory(name: 'Business', context: context),
+                              flashcardCategory(name: 'Computer', context: context),
+                              flashcardCategory(name: 'Literature', context: context),
+                              flashcardCategory(name: 'Language', context: context)
                             ],
                           ),
                         )
@@ -255,27 +228,37 @@ class HomePage extends StatelessWidget {
   }
 }
 
+Container flashcardCategory({required String name, context}){
+  return Container(
+
+    width: (MediaQuery.of(context).size.width)/3.7,
+    height: (MediaQuery.of(context).size.width)/3.7,
+    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3) // changes position of shadow
+        ),
+      ],
+    ),
+    child: Column(
+      spacing: 15,
+      children: [
+        Image.asset('assets/$name.png'),
+        Text(name, style: TextStyle(
+            color: violet
+        ),)
+      ],
+    ),
+  );
+}
+
+
 /*
 
-          Container(
-            height: 90,
-            color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  child: Image.asset(
-                    'assets/Home.png',
-                    scale: 0.85,
-                  ),
-                ),
-                GestureDetector(
-                  child: Image.asset(
-                    'assets/Profile.png',
-                    scale: 0.75,
-                  ),
-                ),
-              ],
-            ),
-          ),
+
  */
