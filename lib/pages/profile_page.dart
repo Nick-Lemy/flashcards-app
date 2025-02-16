@@ -1,9 +1,9 @@
-import 'package:flashcards_app/pages/profile_page.dart';
-import 'package:flashcards_app/utilities/colors.dart';
+import 'package:flashcards_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flashcards_app/utilities/colors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: violet,
                         borderRadius:
-                            BorderRadius.vertical(bottom: Radius.circular(30))),
+                            BorderRadius.vertical(bottom: Radius.circular(20))),
                   ),
                 ),
                 Expanded(
@@ -38,45 +38,6 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 110,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Flashcard Categories',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            TextButton(
-                              style: OutlinedButton.styleFrom(
-                                backgroundColor: violet,
-                                padding: EdgeInsets.symmetric(horizontal: 18),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                'View All',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )
-                          ],
-                        ),
-                        Container(
-                          color: Colors.transparent,
-                          width: double.infinity,
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            runSpacing: 30,
-                            children: [
-                              flashcardCategory(name: 'Mathematics', context: context),
-                              flashcardCategory(name: 'Science', context: context),
-                              flashcardCategory(name: 'Business', context: context),
-                              flashcardCategory(name: 'Computer', context: context),
-                              flashcardCategory(name: 'Literature', context: context),
-                              flashcardCategory(name: 'Language', context: context)
-                            ],
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -86,14 +47,14 @@ class HomePage extends StatelessWidget {
 
             /// Search FlashCards
             Positioned(
-              top: MediaQuery.of(context).size.width * 10.8 / 100,
+              top: MediaQuery.of(context).size.width * 0.28,
               right: MediaQuery.of(context).size.width * 0 / 100,
               width: MediaQuery.of(context).size.width,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Container(
                   padding: EdgeInsetsDirectional.symmetric(
-                      horizontal: 30, vertical: 25),
+                      horizontal: 15, vertical: 15),
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -104,33 +65,66 @@ class HomePage extends StatelessWidget {
                             ),
                       ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(25))),
-                  child: Column(
-                    spacing: 12,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Search Flashcards',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                            prefixIcon: Image.asset('assets/Search.png'),
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12)),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/Thunder.png',
+                              scale: 0.9,
                             ),
-                            hintText: 'Search Here',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 10),
-                            hintStyle: TextStyle(
-                                color: violet,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 14)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '37',
+                                  style: TextStyle(fontSize: 22, color: violet, fontWeight: FontWeight.w700),
+                                ),
+                                Text(
+                                  'Flashcards Added',
+                                  style: TextStyle(fontSize: 11, color: violet),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 0.3,
+                        height: 42,
+                        child: Container(
+                          color: violet,
+                        ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/Time.png',
+                              scale: 0.9,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '122+',
+                                  style: TextStyle(fontSize: 22, color: violet, fontWeight: FontWeight.w700),
+                                ),
+                                Text(
+                                  'Hours Spent',
+                                  style: TextStyle(fontSize: 11, color: violet),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -158,7 +152,7 @@ class HomePage extends StatelessWidget {
                         spreadRadius: 2,
                         blurRadius: 5,
                         offset: Offset(0, 3) // changes position of shadow
-                    ),
+                        ),
                   ]),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -209,7 +203,7 @@ class HomePage extends StatelessWidget {
                         spreadRadius: 2,
                         blurRadius: 5,
                         offset: Offset(0, 3) // changes position of shadow
-                    ),
+                        ),
                   ]),
               child: GestureDetector(
                 child: Container(
@@ -223,7 +217,7 @@ class HomePage extends StatelessWidget {
                             spreadRadius: 2,
                             blurRadius: 5,
                             offset: Offset(0, 3) // changes position of shadow
-                        ),
+                            ),
                       ]),
                   child: Icon(
                     Icons.add,
@@ -240,11 +234,10 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Container flashcardCategory({required String name, context}){
+Container flashcardCategory({required String name, context}) {
   return Container(
-
-    width: (MediaQuery.of(context).size.width)/3.7,
-    height: (MediaQuery.of(context).size.width)/3.7,
+    width: (MediaQuery.of(context).size.width) / 3.7,
+    height: (MediaQuery.of(context).size.width) / 3.7,
     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
     decoration: BoxDecoration(
       color: Colors.white,
@@ -254,21 +247,21 @@ Container flashcardCategory({required String name, context}){
             spreadRadius: 2,
             blurRadius: 5,
             offset: Offset(0, 3) // changes position of shadow
-        ),
+            ),
       ],
     ),
     child: Column(
       spacing: 15,
       children: [
         Image.asset('assets/$name.png'),
-        Text(name, style: TextStyle(
-            color: violet
-        ),)
+        Text(
+          name,
+          style: TextStyle(color: violet),
+        )
       ],
     ),
   );
 }
-
 
 /*
 

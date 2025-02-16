@@ -1,6 +1,8 @@
 import 'package:flashcards_app/utilities/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -61,7 +63,12 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15)),
                       backgroundColor: violet,
                       minimumSize: Size(double.infinity, 50)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
                   child: Text(
                     'Sign In',
                     style: TextStyle(fontWeight: FontWeight.w400),
