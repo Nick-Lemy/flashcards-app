@@ -38,6 +38,37 @@ class ProfilePage extends StatelessWidget {
                         SizedBox(
                           height: 110,
                         ),
+                        Row(
+                          children: [
+                            Spacer(),
+                            GestureDetector(
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 4),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(width: 1, color: violet)),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  spacing: 5,
+                                  children: [
+                                    Text(
+                                      'Screen Time',
+                                      style: TextStyle(fontSize: 11),
+                                    ),
+                                    Image.asset(
+                                      'assets/Back.png',
+                                      color: violet,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -83,7 +114,10 @@ class ProfilePage extends StatelessWidget {
                               children: [
                                 Text(
                                   '37',
-                                  style: TextStyle(fontSize: 22, color: violet, fontWeight: FontWeight.w700),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      color: violet,
+                                      fontWeight: FontWeight.w700),
                                 ),
                                 Text(
                                   'Flashcards Added',
@@ -115,7 +149,10 @@ class ProfilePage extends StatelessWidget {
                               children: [
                                 Text(
                                   '122+',
-                                  style: TextStyle(fontSize: 22, color: violet, fontWeight: FontWeight.w700),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      color: violet,
+                                      fontWeight: FontWeight.w700),
                                 ),
                                 Text(
                                   'Hours Spent',
@@ -161,7 +198,7 @@ class ProfilePage extends StatelessWidget {
                         child: Image.asset(
                           'assets/Home.png',
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => HomePage()),
@@ -173,10 +210,11 @@ class ProfilePage extends StatelessWidget {
                           'assets/Profile.png',
                           scale: 0.8,
                         ),
-                        onTap: (){
+                        onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProfilePage()),
+                            MaterialPageRoute(
+                                builder: (context) => ProfilePage()),
                           );
                         },
                       ),
