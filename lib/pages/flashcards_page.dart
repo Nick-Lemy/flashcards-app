@@ -6,10 +6,7 @@ import 'package:flashcards_app/pages/profile_page.dart';
 class CardPage extends StatefulWidget {
   final String category;
 
-  const CardPage({
-    super.key,
-    required this.category,
-  });
+  const CardPage({super.key, required this.category});
 
   @override
   State<CardPage> createState() => _CardPageState();
@@ -27,28 +24,11 @@ class _CardPageState extends State<CardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: violet,
-        elevation: 0,
-      ),
       body: SafeArea(
         child: Stack(
           children: [
             Column(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 50),
-                    decoration: BoxDecoration(
-                      color: violet,
-                      borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(30),
-                      ),
-                    ),
-                  ),
-                ),
                 Expanded(
                   flex: 3,
                   child: Padding(
@@ -69,7 +49,9 @@ class _CardPageState extends State<CardPage> {
                             TextButton(
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: violet,
-                                padding: const EdgeInsets.symmetric(horizontal: 18),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 18,
+                                ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -104,7 +86,10 @@ class _CardPageState extends State<CardPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 25,
+                  ),
                   decoration: BoxDecoration(
                     boxShadow: const [
                       BoxShadow(
@@ -158,7 +143,82 @@ class _CardPageState extends State<CardPage> {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(context),
+      bottomNavigationBar: Stack(
+        children: [
+          Container(
+            height: 50,
+            color: Colors.transparent,
+            child: Column(
+              children: [
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      GestureDetector(
+                        child: Image.asset('assets/Home.png'),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: violet,
+                            shape: BoxShape.circle,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        child: Image.asset('assets/Profile.png', scale: 0.8),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfilePage(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -198,8 +258,12 @@ class _CardPageState extends State<CardPage> {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
+                        // ignore: deprecated_member_use
                         color: violet.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -228,10 +292,7 @@ class _CardPageState extends State<CardPage> {
                     const SizedBox(width: 8),
                     Text(
                       'Last reviewed: 2 days ago',
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
                     ),
                   ],
                 ),
@@ -272,11 +333,7 @@ class _CardPageState extends State<CardPage> {
                     ),
                   ),
                 ),
-                Container(
-                  width: 1,
-                  height: 50,
-                  color: Colors.grey[300],
-                ),
+                Container(width: 1, height: 50, color: Colors.grey[300]),
                 Expanded(
                   child: TextButton(
                     onPressed: () {
@@ -306,102 +363,6 @@ class _CardPageState extends State<CardPage> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildBottomNavigationBar(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 120,
-          color: Colors.transparent,
-          child: Column(
-            children: [
-              const SizedBox(height: 35),
-              Container(
-                height: 85,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      child: Image.asset('assets/Home.png'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const HomePage()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: Image.asset(
-                        'assets/Profile.png',
-                        scale: 0.8,
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ProfilePage()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          top: 0,
-          right: MediaQuery.of(context).size.width * 0.38,
-          width: 100,
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey,
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: violet,
-                shape: BoxShape.circle,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
